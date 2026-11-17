@@ -15,6 +15,7 @@ ROOT = pathlib.Path(__file__).parent
 SRC = ROOT / "src"
 DOMAIN = "https://keefa.app"
 TODAY = datetime.date.today().isoformat()
+INDEXNOW_KEY = "63a5c8f3138c4f038b9403a916e2fdee"  # public by design: proves site ownership to IndexNow
 IOS = ROOT.parent / "ios" / "apps"
 
 CSS = (SRC / "style.css").read_text(encoding="utf-8")
@@ -403,6 +404,7 @@ def build_files():
               "- Wayfare opening hours and prices are estimates: check before you go.", ""]
     (ROOT / "llms.txt").write_text("\n".join(lines), encoding="utf-8")
     (ROOT / "CNAME").write_text("keefa.app\n", encoding="utf-8")
+    (ROOT / f"{INDEXNOW_KEY}.txt").write_text(INDEXNOW_KEY, encoding="utf-8")
     nf = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><title>Page not found | keefa.app</title>
 <style>body{{margin:0;background:#090A0F;color:#F3F5FA;font:18px/1.6 -apple-system,Segoe UI,Roboto,sans-serif;display:grid;place-items:center;min-height:100vh;text-align:center;padding:20px}}a{{color:#10B981;font-weight:700}}h1{{font-size:56px;margin:0}}</style></head>
 <body><div><h1>404</h1><p>That page does not exist.</p><p><a href="/">Home</a> &middot; <a href="/apps/">Apps</a> &middot; <a href="/ar/">العربية</a></p></div></body></html>
