@@ -1,0 +1,27 @@
+# keefa.app
+
+> iPhone apps for food, money and travel, built for everyday life in the Gulf, North Africa and beyond. English and Arabic.
+
+## Apps
+
+- [Keefa](https://keefa.app/): Snap a meal, get calories and macros in seconds. Built for kabsa, mandi, tagine and home cooking, with a fasting timer and suhoor and iftar times. (soon)
+- [CurrencyX: Converter & Rates](https://keefa.app/currencyx/): Live rates for 150+ currencies, a card check that tells you which currency to pay in, a fee check for exchange booths, and receipt scanning for your trip. (live)
+- [Wayfare: AI Travel Planner](https://keefa.app/wayfare/): Plan any city in seconds: day-by-day plans that fit your food needs, kids, pace and budget, with real places checked on maps. (soon)
+
+## Arabic pages
+
+- [كيفا](https://keefa.app/ar/)
+- [CurrencyX](https://keefa.app/ar/currencyx/)
+- [Wayfare](https://keefa.app/ar/wayfare/)
+
+## Legal
+
+- [Privacy Policy](https://keefa.app/privacy.html)
+- [Terms of Service](https://keefa.app/terms.html)
+- [Support](https://keefa.app/support.html)
+
+## Facts
+
+- Keefa is not a medical device. Calorie and macro numbers are estimates.
+- CurrencyX rates are mid-market rates from public sources and may be delayed. Not financial advice.
+- Wayfare opening hours and prices are estimates: check before you go.
