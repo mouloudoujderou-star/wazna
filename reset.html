@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New password | Keefa</title>
+<style>
+  :root { color-scheme: dark; --bg:#090A0F; --card:#131620; --line:#202538; --ink:#F3F5FA; --muted:#8189A0; --emerald:#10B981; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.65 -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width:760px; margin:0 auto; padding:32px 20px 80px; }
+  h1 { font-size:32px; margin:8px 0 4px; } h2 { font-size:20px; margin:32px 0 8px; }
+  p, li { color:#C3C9D9; } a { color:var(--emerald); } nav a { margin-right:16px; }
+  .meta { color:var(--muted); font-size:14px; } nav { padding-bottom:16px; border-bottom:1px solid var(--line); margin-bottom:8px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px 20px; }
+</style>
+</head>
+<body><main>
+<nav><a href="index.html"><strong>Keefa</strong></a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="support.html">Support</a></nav>
+<h1 id="t-title">Choose a new password</h1>
+<div class="card">
+  <p id="t-intro">Type a new password for your Keefa account.</p>
+  <form id="form" autocomplete="off">
+    <p><label id="t-new" for="pw">New password</label><br><input id="pw" type="password" minlength="8" required autocomplete="new-password"></p>
+    <p><label id="t-again" for="pw2">Repeat the password</label><br><input id="pw2" type="password" minlength="8" required autocomplete="new-password"></p>
+    <p><button id="t-save" type="submit">Save password</button></p>
+  </form>
+  <p id="msg" role="status" aria-live="polite"></p>
+</div>
+<style>
+  input { width:100%; box-sizing:border-box; height:48px; margin-top:6px; padding:0 14px; font-size:16px; color:var(--ink); background:var(--bg); border:1px solid var(--line); border-radius:12px; }
+  button { width:100%; height:52px; border:0; border-radius:999px; background:var(--emerald); color:#fff; font-size:16px; font-weight:700; cursor:pointer; }
+  button:disabled { opacity:.5; cursor:default; }
+  #msg.bad { color:#EF4444; font-weight:600; } #msg.good { color:var(--emerald); font-weight:600; }
+</style>
+<script>
+(function () {
+  var API = 'https://gjtkshvycqmszvocwyis.supabase.co/auth/v1/user';
+  var KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdqdGtzaHZ5Y3Ftc3p2b2N3eWlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ0MTUwMDYsImV4cCI6MjEwOTk5MTAwNn0.GU1EVSLXhREweB3LSpYNIvcrThGfbe0qCbczeszcnXw';
+  var TEXT = {
+    en: { title: 'Choose a new password', intro: 'Type a new password for your account.', n: 'New password', again: 'Repeat the password', save: 'Save password',
+      short: 'Use at least 8 characters.', differ: 'The two passwords are not the same.', done: 'Password changed. Open the app and sign in with the new password.',
+      expired: 'This link is no longer valid. Open the app, tap "Forgot password?" and ask for a new link.', fail: 'Could not save the password. Ask for a new link and try again.' },
+    fr: { title: 'Choisir un nouveau mot de passe', intro: 'Saisissez un nouveau mot de passe pour votre compte.', n: 'Nouveau mot de passe', again: 'Répétez le mot de passe', save: 'Enregistrer',
+      short: 'Utilisez au moins 8 caractères.', differ: 'Les deux mots de passe sont différents.', done: 'Mot de passe modifié. Ouvrez l’application et connectez-vous avec le nouveau mot de passe.',
+      expired: 'Ce lien n’est plus valide. Ouvrez l’application, touchez « Mot de passe oublié ? » et demandez un nouveau lien.', fail: 'Impossible d’enregistrer le mot de passe. Demandez un nouveau lien et réessayez.' },
+    ar: { title: 'اختر كلمة مرور جديدة', intro: 'اكتب كلمة مرور جديدة لحسابك.', n: 'كلمة المرور الجديدة', again: 'أعد كتابة كلمة المرور', save: 'حفظ كلمة المرور',
+      short: 'استخدم 8 أحرف على الأقل.', differ: 'كلمتا المرور غير متطابقتين.', done: 'تم تغيير كلمة المرور. افتح التطبيق وسجّل الدخول بكلمة المرور الجديدة.',
+      expired: 'هذا الرابط لم يعد صالحًا. افتح التطبيق واضغط «نسيت كلمة المرور؟» واطلب رابطًا جديدًا.', fail: 'تعذّر حفظ كلمة المرور. اطلب رابطًا جديدًا وحاول مرة أخرى.' }
+  };
+  var lang = (navigator.language || 'en').slice(0, 2);
+  var t = TEXT[lang] || TEXT.en;
+  if (lang === 'ar') { document.documentElement.dir = 'rtl'; document.documentElement.lang = 'ar'; }
+  function byId(id) { return document.getElementById(id); }
+  byId('t-title').textContent = t.title; byId('t-intro').textContent = t.intro; byId('t-new').textContent = t.n;
+  byId('t-again').textContent = t.again; byId('t-save').textContent = t.save;
+  var msg = byId('msg'), form = byId('form');
+  function say(text, good) { msg.textContent = text; msg.className = good ? 'good' : 'bad'; }
+
+  // The email link lands here with a short-lived token after the #. Read it, then take it out of the address bar.
+  var params = new URLSearchParams(location.hash.replace(/^#/, ''));
+  var token = params.get('access_token');
+  var isRecovery = params.get('type') === 'recovery';
+  history.replaceState(null, '', location.pathname);
+  if (!token || !isRecovery) { form.hidden = true; say(t.expired, false); return; }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var pw = byId('pw').value, pw2 = byId('pw2').value;
+    if (pw.length < 8) return say(t.short, false);
+    if (pw !== pw2) return say(t.differ, false);
+    byId('t-save').disabled = true;
+    fetch(API, { method: 'PUT', headers: { 'content-type': 'application/json', apikey: KEY, authorization: 'Bearer ' + token }, body: JSON.stringify({ password: pw }) })
+      .then(function (res) {
+        if (res.ok) { form.hidden = true; token = null; say(t.done, true); }
+        else { byId('t-save').disabled = false; say(res.status === 401 || res.status === 403 ? t.expired : t.fail, false); }
+      })
+      .catch(function () { byId('t-save').disabled = false; say(t.fail, false); });
+  });
+})();
+</script>
+
+</main></body></html>
