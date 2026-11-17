@@ -1,10 +1,10 @@
 # keefa.app
 
-> iPhone apps for food, money and travel, built for everyday life in the Gulf, North Africa and beyond. English and Arabic.
+> iPhone apps for food, money and travel, built for everyday life anywhere in the world. English and Arabic pages.
 
 ## Apps
 
-- [Keefa](https://keefa.app/): Snap a meal, get calories and macros in seconds. Built for kabsa, mandi, tagine and home cooking, with a fasting timer and suhoor and iftar times. (soon)
+- [Keefa](https://keefa.app/): Snap a meal, get calories and macros in seconds. Understands home cooking from every cuisine, with a fasting timer and an optional Ramadan mode. (soon)
 - [CurrencyX: Converter & Rates](https://keefa.app/currencyx/): Live rates for 150+ currencies, a card check that tells you which currency to pay in, a fee check for exchange booths, and receipt scanning for your trip. (live)
 - [Wayfare: AI Travel Planner](https://keefa.app/wayfare/): Plan any city in seconds: day-by-day plans that fit your food needs, kids, pace and budget, with real places checked on maps. (soon)
 

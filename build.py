@@ -34,8 +34,8 @@ APPS = [
          category="HealthApplication", home="/", legal="https://keefa.app/privacy.html",
          terms="https://keefa.app/terms.html", support="https://keefa.app/support.html",
          sub={"en": "Food scanner, macros, fasting", "ar": "صيام متقطع وبروتين ودايت"},
-         promo={"en": "Snap a meal, get calories and macros in seconds. Built for kabsa, mandi, tagine and home cooking, with a fasting timer and suhoor and iftar times.",
-                "ar": "صوّر وجبتك واعرف السعرات والماكروز في ثوانٍ. مصمم للكبسة والمندي والأكل البيتي، مع مؤقت صيام ومواعيد السحور والإفطار."}),
+         promo={"en": "Snap a meal, get calories and macros in seconds. Understands home cooking from every cuisine, with a fasting timer and an optional Ramadan mode.",
+                "ar": "صوّر وجبتك واعرف السعرات والماكروز في ثوانٍ. يفهم الأكل البيتي من كل مطابخ العالم، مع مؤقت صيام ووضع رمضان اختياري."}),
     dict(slug="currencyx", name={"en": "CurrencyX", "ar": "CurrencyX"}, folder="currency-x", accent="#3B82F6",
          icon="assets/currencyx.png", status="live", store_url="https://apps.apple.com/app/id6760399044", apple_id="6760399044",
          category="FinanceApplication", home="/currencyx/",
@@ -55,7 +55,7 @@ G = {  # generic UI strings
         apps="Apps", home_title="Apps that make everyday life simpler",
         hub_title="Our apps: Keefa, CurrencyX and Wayfare",
         hub_desc="iPhone apps for food, money and travel: Keefa calorie and macro tracker, CurrencyX currency converter and Wayfare AI travel planner.",
-        hub_h1="Useful apps for food, money and travel", hub_sub="Small, honest iPhone apps built for real life in the Gulf, North Africa and beyond. Each one does one job well.",
+        hub_h1="Useful apps for food, money and travel", hub_sub="Small, honest iPhone apps for everyday life, wherever you are. Each one does one job well.",
         live="Available now", soon="Coming soon", learn="Learn more", get="Download on the App Store", soon_btn="Coming soon on the App Store",
         next_h="The next app is on its way", next_p="We keep building. Check back here, every new app gets its own page.",
         features="What you get", pricing="Pricing", faq="Questions, answered", other="More apps",
@@ -69,7 +69,7 @@ G = {  # generic UI strings
         apps="التطبيقات", home_title="تطبيقات تسهّل حياتك اليومية",
         hub_title="تطبيقاتنا: كيفا وCurrencyX وWayfare",
         hub_desc="تطبيقات آيفون للأكل والمال والسفر: كيفا لحساب السعرات والماكروز، وCurrencyX لتحويل العملات، وWayfare مخطط الرحلات الذكي.",
-        hub_h1="تطبيقات مفيدة للأكل والمال والسفر", hub_sub="تطبيقات آيفون صغيرة وصريحة لحياتك الحقيقية في الخليج وشمال أفريقيا وغيرها. كل تطبيق يتقن مهمة واحدة.",
+        hub_h1="تطبيقات مفيدة للأكل والمال والسفر", hub_sub="تطبيقات آيفون صغيرة وصريحة لحياتك اليومية، أينما كنت. كل تطبيق يتقن مهمة واحدة.",
         live="متوفر الآن", soon="قريباً", learn="اعرف أكثر", get="حمّل من App Store", soon_btn="قريباً على App Store",
         next_h="التطبيق القادم في الطريق", next_p="نواصل البناء. تابعنا هنا، وكل تطبيق جديد له صفحته.",
         features="وش تحصل عليه", pricing="الأسعار", faq="أسئلة وأجوبة", other="تطبيقات أخرى",
@@ -260,9 +260,9 @@ def build_keefa(lang):
         {"@type": "WebSite", "@id": DOMAIN + "/#site", "url": DOMAIN + "/", "name": "keefa.app", "inLanguage": ["en", "ar"]},
         {"@type": "MobileApplication", "@id": abs_url(lang, "/") + "#app", "name": "Keefa", "alternateName": ["Keefa: Calorie Counter", "كيفا"],
          "operatingSystem": "iOS", "applicationCategory": "HealthApplication", "description": desc,
-         "inLanguage": ["en", "ar", "fr"], "image": DOMAIN + "/assets/icon.png", "url": abs_url(lang, "/"),
+         "inLanguage": ["en", "ar", "fr", "es", "pt", "de", "it", "tr", "id", "ru", "ja", "ko"], "image": DOMAIN + "/assets/icon.png", "url": abs_url(lang, "/"),
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
-         "availableOnDevice": "iPhone", "keywords": "calorie counter, macro tracker, food scanner, intermittent fasting, Ramadan, suhoor, iftar"},
+         "availableOnDevice": "iPhone", "keywords": "calorie counter, macro tracker, food scanner, meal photo, intermittent fasting, keto, Ramadan"},
         {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": S[q], "acceptedAnswer": {"@type": "Answer", "text": S[a]}} for q, a in faq_keys]},
     ]
     hd = head(lang, "/", title, desc, "assets/og-keefa.png", ld, apple_id=app["apple_id"])
@@ -388,7 +388,7 @@ def build_files():
         "User-agent: GPTBot\nAllow: /\nUser-agent: ClaudeBot\nAllow: /\nUser-agent: PerplexityBot\nAllow: /\nUser-agent: Google-Extended\nAllow: /\n\n"
         f"Sitemap: {DOMAIN}/sitemap.xml\n", encoding="utf-8")
     lines = ["# keefa.app", "",
-             "> iPhone apps for food, money and travel, built for everyday life in the Gulf, North Africa and beyond. English and Arabic.", "",
+             "> iPhone apps for food, money and travel, built for everyday life anywhere in the world. English and Arabic pages.", "",
              "## Apps", ""]
     for a in APPS:
         if a["slug"] == "keefa":
