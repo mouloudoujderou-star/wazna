@@ -260,9 +260,9 @@ def build_keefa(lang):
         {"@type": "WebSite", "@id": DOMAIN + "/#site", "url": DOMAIN + "/", "name": "keefa.app", "inLanguage": ["en", "ar"]},
         {"@type": "MobileApplication", "@id": abs_url(lang, "/") + "#app", "name": "Keefa", "alternateName": ["Keefa: Calorie Counter", "كيفا"],
          "operatingSystem": "iOS", "applicationCategory": "HealthApplication", "description": desc,
-         "inLanguage": ["en", "ar", "fr", "es", "pt", "de", "it", "tr", "id", "ru", "ja", "ko"], "image": DOMAIN + "/assets/icon.png", "url": abs_url(lang, "/"),
+         "inLanguage": ["en", "ar", "fr", "es", "pt", "de", "it", "tr", "id", "ru", "ja", "ko", "hi", "vi", "th", "pl", "nl"], "image": DOMAIN + "/assets/icon.png", "url": abs_url(lang, "/"),
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
-         "availableOnDevice": "iPhone", "keywords": "calorie counter, macro tracker, food scanner, meal photo, intermittent fasting, keto, Ramadan"},
+         "availableOnDevice": "iPhone", "keywords": "calorie counter, macro tracker, food scanner, barcode scanner, meal photo, intermittent fasting, keto, Ramadan"},
         {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": S[q], "acceptedAnswer": {"@type": "Answer", "text": S[a]}} for q, a in faq_keys]},
     ]
     hd = head(lang, "/", title, desc, "assets/og-keefa.png", ld, apple_id=app["apple_id"])
